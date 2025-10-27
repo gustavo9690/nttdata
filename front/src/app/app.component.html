@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  
+  <div class="personas-contenido">
+    <div *ngIf="error" class="error">
+      <p>{{ error }}</p>
+    </div>
+
+    <div *ngIf="!loading && !error && personas.length > 0" class="personas-lista">
+      <div *ngFor="let persona of personas" class="persona-card">
+        <img [src]="persona.foto" [alt]="persona.nombre" class="persona-foto">
+        <div class="persona-detalle">
+          <p><strong>Nombre:</strong>:{{ persona.nombre }}</p>
+          <p><strong>Género:</strong> {{ persona.genero }}</p>
+          <p><strong>Ubicación:</strong> {{ persona.ubicacion }}</p>
+          <p><strong>Correo electronico:</strong> {{ persona.correo_electronico }}</p>
+          <p><strong>Fecha Nacimiento:</strong> {{ persona.fecha_nacimiento | date:'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && !error && personas.length === 0" class="no-data">
+      <p>No hay personas para mostrar. Haz clic en "Cargar Personas" para comenzar.</p>
+    </div>
+  </div>
+</div>
